@@ -8,9 +8,13 @@ class LaterPaper
     @return_code = 0
   end
 
-  def check_auth?
+  def check_authentication?
     execute_url_command(auth_url('authenticate'))
     return ( @return_code == "200" )
+  end
+
+  def add(url)
+    add?(url)
   end
 
   def add?(url)

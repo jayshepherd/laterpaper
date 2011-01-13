@@ -8,7 +8,7 @@ describe LaterPaper do
     end
 
     it "should return false when checking the credentials" do
-      @ip.check_auth?.should == false
+      @ip.check_authentication?.should == false
       @ip.return_code.should == "403"
     end
   end
@@ -19,12 +19,16 @@ describe LaterPaper do
     end
   
     it "should return true when checking the credentials" do
-      @ip.check_auth?.should == true
+      @ip.check_authentication?.should == true
     end
     
-    it "should succeeed on a valid url" do
+    it "should succeed on a valid url" do
       @ip.add?("www.sprucecreeksoftware.com").should == true
-    end 
+    end
+
+    it "should allow work with add like it does with add?" do
+      @ip.add("www.sprucecreeksoftware.com").should == true
+    end
 
     it "should fail with a 400 on an invalid url" do
       @ip.add?("http://www.foobar.com").should == false
@@ -35,10 +39,11 @@ describe LaterPaper do
 
     it "should fail with a 500 if there is a server problem"
 
-    it "should fail with a 400 if there is no url provided" do
-      @ip.add?("").should == false
-      @ip.return_code.should == "400"
-    end
+    # API is inconsistent and sometimes returns 201, so cannot reliably test
+    #it "should fail with a 400 if there is no url provided" do
+    #  @ip.add?("").should == false
+    #  @ip.return_code.should == "400"
+    #end
 
   end
 

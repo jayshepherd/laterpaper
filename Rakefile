@@ -16,7 +16,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/jayshepherd/laterpaper"
   gem.license = "MIT"
   gem.summary = "Library for using the Instapaper API" 
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.description = "Library for using the Instapaper API" 
   gem.email = "jay@sprucecreeksoftware.com"
   gem.authors = ["Jay Shepherd"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
