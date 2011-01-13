@@ -15,7 +15,7 @@ describe LaterPaper do
   
   context "with a valid username and password" do
     before do
-      @ip = LaterPaper.new('jaystuff@shepjour.com','password')
+      @ip = LaterPaper.new('jaystuff@shepjour.com','password1')
     end
   
     it "should return true when checking the credentials" do
@@ -43,7 +43,6 @@ describe LaterPaper do
   end
 
   it "should return a code of 500 when there is a server problem"
-
 
 end
 
