@@ -1,7 +1,7 @@
 require 'uri'
 require 'net/http'
 
-class Instapaper
+class LaterPaper
   def initialize(username, password)
     @username = username
     @password = password

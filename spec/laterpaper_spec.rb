@@ -1,10 +1,10 @@
-require 'instapaper'
+require 'laterpaper'
 
-describe Instapaper do
+describe LaterPaper do
 
   context "with invalid username or password" do
     before do
-      @ip = Instapaper.new('jaystuff@shepjour.com','bogus')
+      @ip = LaterPaper.new('jaystuff@shepjour.com','bogus')
     end
 
     it "should return false when checking the credentials" do
@@ -15,7 +15,7 @@ describe Instapaper do
   
   context "with a valid username and password" do
     before do
-      @ip = Instapaper.new('jaystuff@shepjour.com','password')
+      @ip = LaterPaper.new('jaystuff@shepjour.com','password')
     end
   
     it "should return true when checking the credentials" do
