@@ -9,12 +9,12 @@ class Instapaper
   end
 
   def check_auth?
-    execute_url_command(url_for_authentication)
+    execute_url_command(auth_url('authenticate'))
     return ( @return_code == "200" )
   end
 
   def add?(url)
-    execute_url_command(base_url_for_add << "&url=#{url}")
+    execute_url_command(auth_url("add") << "&url=#{url}")
     return ( @return_code == "201" )
   end
  
@@ -31,15 +31,11 @@ class Instapaper
 
   private
 
-  def url_for_authentication
-    'https://www.instapaper.com/api/authenticate' << credentials_params
-  end
-
-  def base_url_for_add
-    'https://www.instapaper.com/api/add' << credentials_params
-  end
-
-  def credentials_params
-    "?username=#{@username}&password=#{@password}"
+  def auth_url(command)
+    if @username.include?("@")
+      "https://www.instapaper.com/api/#{command}/" << "?username=#{@username}&password=#{@password}"
+    else
+      "https://#{@username}:#{@password}@www.instapaper.com/api/#{command}/"
+    end
   end
 end
