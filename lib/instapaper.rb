@@ -8,23 +8,21 @@ class Instapaper
     @return_code = 0
   end
 
-  def test
-    puts "testing from test"
-    puts @authenticate_url
+  def check_auth?
+    execute_url_command(url_for_authentication)
+    return ( @return_code == "200" )
   end
-  
-  def check_auth
-    url = URI.parse(url_for_authentication)
-    Net::HTTP.start(url.host) do |http|
-      @return_code = http.head(url.request_uri).code
-      return ( @return_code == "200" )
+
+  def add?(url)
+    execute_url_command(base_url_for_add << "&url=#{url}")
+    return ( @return_code == "201" )
+  end
+ 
+  def execute_url_command(url)
+    command = URI.parse(url)
+    Net::HTTP.start(command.host) do |http|
+      @return_code = http.head(command.request_uri).code
     end
-  end
-
-  def add(url)
-    url = base_url_for_add << "?url=#{url}" 
-    
-
   end
   
   def return_code

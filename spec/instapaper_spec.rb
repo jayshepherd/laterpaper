@@ -6,7 +6,7 @@ describe Instapaper do
     password = 'password'
 
     ip = Instapaper.new(username, password)
-    ip.check_auth.should == true
+    ip.check_auth?.should == true
   end
   
   it "should return false when checking the authentication of a user with invalid credentials" do
@@ -14,7 +14,7 @@ describe Instapaper do
     password = 'bogus'
     
     ip = Instapaper.new(username, password)
-    ip.check_auth.should == false
+    ip.check_auth?.should == false
 
   end
   
@@ -23,18 +23,19 @@ describe Instapaper do
     password = 'bogus'
 
     ip = Instapaper.new(username, password)
-    ip.check_auth
-    ip.return_code.should == "403"
+    if ip.check_auth? == false
+      ip.return_code.should == "403"
+    end
   end
 
   it "should return a code of 500 when there is a server problem"
 
   context "when a valid username and password" do
     before do
-      username = 'jaystuff@shepjour.com'
-      password = 'bogus'
+      @ip = Instapaper.new('jaystuff@shepjour.com','password')
     end
     it "should add a url" do
+      @ip.add?("www.sprucecreeksoftware.com").should == true
     end  
   end
 
