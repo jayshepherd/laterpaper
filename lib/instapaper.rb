@@ -17,19 +17,19 @@ class Instapaper
     execute_url_command(auth_url("add") << "&url=#{url}")
     return ( @return_code == "201" )
   end
- 
-  def execute_url_command(url)
-    command = URI.parse(url)
-    Net::HTTP.start(command.host) do |http|
-      @return_code = http.head(command.request_uri).code
-    end
-  end
   
   def return_code
     @return_code
   end
 
   private
+  
+  def execute_url_command(url)
+    command = URI.parse(url)
+    Net::HTTP.start(command.host) do |http|
+      @return_code = http.head(command.request_uri).code
+    end
+  end
 
   def auth_url(command)
     if @username.include?("@")
