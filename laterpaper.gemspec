@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
     "README.markdown",
     "Rakefile",
     "VERSION",
+    "laterpaper.gemspec",
     "lib/laterpaper.rb",
     "spec/laterpaper_spec.rb"
   ]
