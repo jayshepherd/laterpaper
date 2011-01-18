@@ -10,7 +10,7 @@ Instapaper API Library for Ruby
     
     l.status_code # returns the http status code from the InstaPaper call
     
-    l.add(url) # will add the url to the account and return true if successfull.
+    l.add(url)? # will add the url to the account and return true if successfull.
 
 # ToDo
 
