@@ -4,10 +4,13 @@ Instapaper API Library for Ruby
 
 # Usage
 
-l = LaterPaper.new('username','password')
-l.authenticate? returns true if the username and password are valid
-l.status_code returns the http status code from the InstaPaper call
-l.add(url) will add the url to the account and return true if successfull.
+    l = LaterPaper.new('username','password')
+    
+    l.authenticate? # returns true if the username and password are valid
+    
+    l.status_code # returns the http status code from the InstaPaper call
+    
+    l.add(url) # will add the url to the account and return true if successfull.
 
 # ToDo
 
